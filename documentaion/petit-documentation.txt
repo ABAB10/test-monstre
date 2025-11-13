@@ -1,0 +1,38 @@
++ Objectif général 
+
+	Créer une application web nommée Bestiarium, permettant à un utilisateur de générer, 
+	gérer et visualiser des créatures fantastiques (monstres) via une interface connectée à 
+	une IA. 
+
+	Pour les choix techniques, on a utilisé le PHP natif comme langage de programmation, pour 
+	ce qui est de base de données on a utilisé SQLITE pour pouvoir enregistrer les utilisateurs 
+	et leurs monstres. Les tests du bon fonctionnement de l'application on a utilisé le postman. 
+
+	Le but de cette application est de savoir faire des API et aussi de savoir les manipuler au 
+	sein d'une application. Aussi, on a réussi à intégrer l'IA dans notre application. 
+
+
++ Analyse fonctionnelle 
+
+	Acteurs principaux 
+
+		● User : utilisateur final de l'application. 
+		● AI : système d'intelligence artificielle intégré à l'application.
+
++ Cas d'utilisation (Use Cases) 
+
+	Les principales fonctionnalités sont : 
+		1. Sign up → inscription d'un nouvel utilisateur. 
+		2. Sign in → authentification de l'utilisateur existant. 
+		3. Log out → déconnexion. 
+		4. Create the monster → création d'un nouveau monstre via l'IA. 
+		5. Generate photos of the monster → génération d'images du monstre. 
+		6. Generate description of the monster → création automatique d'une fiche 
+		descriptive. 
+		7. Generate health, defence and attack score → attribution de statistiques (points de 
+			vie, défense, attaque). 
+
++ Relations
+
+	● L'acteur User interagit avec toutes les fonctions principales. 
+	● L'acteur AI intervient dans la génération automatique (photos, description, scores). 
