@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+<<<<<<< HEAD
 require_once __DIR__ . '/classes/User.class.php';
 require_once __DIR__ . '/classes/Monster.class.php';
 
@@ -9,12 +10,18 @@ $errorMessage = '';
 $successMessage = '';
 
 // Gestion de la déconnexion
+=======
+require_once 'User.class.php';
+require_once 'Monster.class.php';
+
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     User::logout();
     header("Location: index.php");
     exit;
 }
 
+<<<<<<< HEAD
 // Fonction utilitaire pour obtenir l'id utilisateur connecté
 function getUserId() {
     return $_SESSION['user_id'] ?? null;
@@ -66,10 +73,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
     }
 }
+=======
+ $errorMessage = '';
+ $successMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_POST['action'] === 'signup') {
+    }
+    if ($_POST['action'] === 'login') {
+    }
+    if ($_POST['action'] === 'create_monster' && User::isLoggedIn()) {
+    }
+}
+
+
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>Monster Creator AI</title>
 <style>
@@ -134,32 +157,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             <input type="number" name="heads" placeholder="Nombre de têtes" required min="1"><br>
             <button type="submit">Créer</button>
         </form>
+=======
+</head>
+<body>
+<div class="container">
+    <h1>AI Monster Creator</h1>
+
+    <?php if (User::isLoggedIn()): ?>
+        <h2>Bienvenue, <?= htmlspecialchars(User::getPseudo()) ?> !</h2>
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
 
         <hr>
         <h2>Mes monstres</h2>
         <div class="monster-grid">
             <?php
+<<<<<<< HEAD
             $userId = getUserId();
             $userMonsters = [];
             if ($userId) {
                 $userMonsters = Monster::getByUserId($userId);
             }
+=======
+            $userMonsters = Monster::getByUserId(User::getId());
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
             if (empty($userMonsters)) {
                 echo "<p>Aucun monstre créé.</p>";
             } else {
                 foreach ($userMonsters as $monster) {
                     echo "<div class='monster'>";
+<<<<<<< HEAD
                     if (!empty($monster['image_data_uri'])) {
                         echo "<img src='" . htmlspecialchars($monster['image_data_uri']) . "' alt='Image de " . htmlspecialchars($monster['name']) . "'>";
                     } else {
 zz                        echo "<img src='image.php?id=" . htmlspecialchars($monster['id']) . "' alt='Image de " . htmlspecialchars($monster['name']) . "'>";
                     }
+=======
+                    echo "<img src='image.php?id=" . htmlspecialchars($monster['id']) . "' alt='Image de " . htmlspecialchars($monster['name']) . "'>";
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
                     echo "<h3>" . htmlspecialchars($monster['name']) . "</h3>";
                     echo "<p><strong>Type:</strong> " . htmlspecialchars($monster['type']) . "<br>";
                     echo "<strong>Têtes:</strong> " . htmlspecialchars($monster['heads']) . "<br>";
                     echo "<strong>Créé le:</strong> " . htmlspecialchars($monster['createdAt']) . "<br><br>";
                     echo "<em>" . htmlspecialchars($monster['description']) . "</em><br><br>";
+<<<<<<< HEAD
                     echo "Santé: " . htmlspecialchars($monster['health']) . " | Attaque: " . htmlspecialchars($monster['attack']) . " | Défense: " . htmlspecialchars($monster['defense']) . "<br>";
+=======
+                    echo "Santé: {$monster['health']} | Attaque: {$monster['attack']} | Défense: {$monster['defense']}<br>";
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
                     echo "</div>";
                 }
             }
@@ -167,6 +211,9 @@ zz                        echo "<img src='image.php?id=" . htmlspecialchars($mon
         </div>
     <?php endif; ?>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
 </body>
 </html>

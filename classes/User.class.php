@@ -1,5 +1,6 @@
 <?php
 class User {
+<<<<<<< HEAD
 
 // Connexion à la base de données et création de la table si nécessaire
 
@@ -30,6 +31,15 @@ class User {
             return $pdo;
         } catch (PDOException $e) {
             die("Erreur de connexion ou de création de la base de données : " . $e->getMessage());
+=======
+    // Connexion à la base de données SQLite
+    private static function connect() {
+        $dbFile = 'database.db';
+        try {
+            return new PDO('sqlite:' . $dbFile);
+        } catch (PDOException $e) {
+            die("Erreur de connexion à la base de données : " . $e->getMessage());
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
         }
     }
 
@@ -52,7 +62,11 @@ class User {
         $stmt->execute([$mail]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+<<<<<<< HEAD
         // Vérification du mot de passe avec le hash
+=======
+        // Vérification du mot de passe
+>>>>>>> 83b374662e3425c9fcb8025040209aaf8ed65a0f
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['pseudo'] = $user['pseudo'];
